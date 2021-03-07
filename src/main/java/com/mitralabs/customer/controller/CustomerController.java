@@ -13,6 +13,6 @@ public class CustomerController {
 	public String getCustomer() throws UnknownHostException {
 		
 		InetAddress inetAddress = InetAddress.getLocalHost();		
-		return "Customer:" + inetAddress.getHostAddress() + ":" + inetAddress.getHostName();
+		return "customer: " + inetAddress.getHostAddress() + " : " + inetAddress.getHostName();
 	}
 }
