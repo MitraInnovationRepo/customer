@@ -11,4 +11,4 @@ RUN mkdir /app
 
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-app.jar
 
-ENTRYPOINT ["java","-jar","/app/spring-app.jar"]
+ENTRYPOINT ["java","-jar","/app/spring-app.jar","--spring.config.additional-location=/config/application.properties"]
