@@ -87,4 +87,3 @@ local.properties
 target/
 
 /bin
-src/main/resources/application.properties
