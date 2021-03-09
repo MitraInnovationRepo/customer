@@ -55,6 +55,6 @@ jacocoTestReport {
 
 sonarqube {
     properties {
-        property 'sonar.coverage.exclusions', '**/model/**,**/dao/**,**/aspect/**,**/config/**,**/CustomerApplication.java'
+        property 'sonar.coverage.exclusions', '**/CustomerApplication.java'
     }
 }
