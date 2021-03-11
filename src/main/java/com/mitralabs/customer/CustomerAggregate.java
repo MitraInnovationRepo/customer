@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mitralabs.customer.command.CreateCustomerCommand;
 import com.mitralabs.customer.command.CustomerCommand;
+import com.mitralabs.customer.command.CustomerCreatedCommand;
 import com.mitralabs.customer.dto.CustomerDTO;
-import com.mitralabs.customer.event.CreateCustomerEvent;
+import com.mitralabs.customer.event.CustomerCreatedEvent;
 
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
@@ -25,12 +25,12 @@ public class CustomerAggregate extends ReflectiveMutableCommandProcessingAggrega
 	@Getter
 	private Map<String, String> accounts = new HashMap();
 
-	public List<Event> process(CreateCustomerCommand cmd) {
+	public List<Event> process(CustomerCreatedCommand cmd) {
 		return EventUtil.events(
-				new CreateCustomerEvent(cmd.getFirstName(), cmd.getLastName(), cmd.getAddress(), cmd.getEmail()));
+				new CustomerCreatedEvent(cmd.getFirstName(), cmd.getLastName(), cmd.getAddress(), cmd.getEmail()));
 	}
 
-	public void apply(CreateCustomerEvent event) {
+	public void apply(CustomerCreatedEvent event) {
 		customer = new CustomerDTO();
 		customer.setFirstName(event.getFirstName());
 		customer.setLastName(event.getLastName());

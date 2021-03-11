@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.collect.ImmutableMap;
 import com.mitralabs.customer.CustomerAggregate;
-import com.mitralabs.customer.command.CreateCustomerCommand;
 import com.mitralabs.customer.command.CustomerCommand;
+import com.mitralabs.customer.command.CustomerCreatedCommand;
 import com.mitralabs.customer.dao.QueryDao;
 import com.mitralabs.customer.dto.CustomerDTO;
 
@@ -33,7 +33,7 @@ public class CustomerService {
 
 		try {
 			String aggregateId = aggregateRepository
-					.save(new CreateCustomerCommand(customerDTO.getFirstName(), customerDTO.getLastName(),
+					.save(new CustomerCreatedCommand(customerDTO.getFirstName(), customerDTO.getLastName(),
 							customerDTO.getAddress(), customerDTO.getEmail()),
 							Optional.of(new SaveOptions().withEventMetadata(
 									ImmutableMap.of("eventTime", String.valueOf(new Date().getTime())))))
