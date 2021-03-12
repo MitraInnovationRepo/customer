@@ -14,7 +14,6 @@ import io.eventuate.EventUtil;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
 import lombok.Getter;
 
-
 public class CustomerAggregate extends ReflectiveMutableCommandProcessingAggregate<CustomerAggregate, CustomerCommand> {
 	/**
 	 * Customer entity
@@ -26,8 +25,8 @@ public class CustomerAggregate extends ReflectiveMutableCommandProcessingAggrega
 	private Map<String, String> accounts = new HashMap();
 
 	public List<Event> process(CustomerCreatedCommand cmd) {
-		return EventUtil.events(
-				new CustomerCreatedEvent(cmd.getFirstName(), cmd.getLastName(), cmd.getAddress(), cmd.getEmail()));
+		return EventUtil.events(new CustomerCreatedEvent(cmd.getFirstName(), cmd.getLastName(), cmd.getAddress(),
+				cmd.getEmail(), "SAVINGS"));
 	}
 
 	public void apply(CustomerCreatedEvent event) {
