@@ -18,8 +18,8 @@ public class CustomerEventHandler {
 	private CustomerService customerService;
 
 	@EventHandlerMethod
-	public void customerCreatedEvent(DispatchedEvent<AccountCreatedEvent> event) {
-		log.info("CustomerCreatedEvent recived", event.getEntityId());
+	public void accountCreatedEvent(DispatchedEvent<AccountCreatedEvent> event) {
+		log.info("AccountCreatedEvent recived", event.getEntityId());
 
 		AccountCreatedEvent aEvent = event.getEvent();
 

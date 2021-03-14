@@ -1,5 +1,8 @@
 package com.mitralabs.customer.dto;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -24,5 +27,10 @@ public class CustomerDTO {
 
 	@Size(min = 1, max = 30)
 	private String email;
+
+	private String status;
+
+	@Getter
+	private Map<String, AccountDTO> accounts = new HashMap();
 
 }
