@@ -46,5 +46,6 @@ public class CustomerAggregate extends ReflectiveMutableCommandProcessingAggrega
 		account.setCreatedAt(event.getCreatedAt());
 
 		customer.getAccounts().put(event.getAccountId(), account);
+		customer.setStatus("ACTIVE");
 	}
 }
