@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.collect.ImmutableMap;
+import com.mitralabs.account.event.AccountCreatedEvent;
 import com.mitralabs.customer.CustomerAggregate;
+import com.mitralabs.customer.command.AccountAddedCommand;
 import com.mitralabs.customer.command.CustomerCommand;
 import com.mitralabs.customer.command.CustomerCreatedCommand;
 import com.mitralabs.customer.dao.QueryDao;
@@ -49,6 +51,14 @@ public class CustomerService {
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
+	}
+
+	public void addAccount(AccountCreatedEvent event) throws Exception {
+
+		log.trace("Updating the aggregate with account number [{}]", event.getAccountId());
+		aggregateRepository.update(event.getOwnerId(),
+				new AccountAddedCommand(event.getAccountId(), event.getAccountType(), event.getCreatedAt()));
+
 	}
 
 	public CustomerDTO getCustomer(String aggregateId) throws Exception {
