@@ -1,2 +1,2 @@
-# customer MSA
+# customer
 
